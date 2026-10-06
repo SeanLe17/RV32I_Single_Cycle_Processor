@@ -26,13 +26,12 @@ module rv32i_instruction_memory(
     );
     always_comb begin
         case (pc)
-            32'd0:  instruction = 32'h00A0_0193; // addi x3, x0, 10
-            32'd4:  instruction = 32'h0140_0113; // addi x2, x0, 20
-            32'd8:  instruction = 32'h0021_82B3; // add  x5, x3, x2
-            32'd12: instruction = 32'h4031_0333; // sub  x6, x2, x3
-
+            32'd0:  instruction = 32'h0140_0193; // addi x3, x0, 20
+            32'd4:  instruction = 32'h0160_0113; // addi x2, x0, 22
+            32'd8:  instruction = 32'h0021_81B3; // add  x3, x3, x2
+            32'd12: instruction = 32'h0000_0063; // beq  x0, x0, 0
             default: instruction = 32'h0000_0013; // nop
-        endcase
+        endcase 
     end
 
 endmodule

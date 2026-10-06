@@ -1,37 +1,29 @@
 Vivado Simulator v2025.2
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: C:/AMDDesignTools/2025.2/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot ALU_TB_behav xil_defaultlib.ALU_TB xil_defaultlib.glbl -log elaborate.log 
+Running: C:/AMDDesignTools/2025.2/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot basys_top_TB_behav xil_defaultlib.basys_top_TB xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:54]
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:60]
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:66]
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:72]
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:78]
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:84]
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:90]
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:96]
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:102]
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:108]
-WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv:114]
+WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/basys_top_TB.sv:45]
+WARNING: [VRFC 10-8967] first argument of $fatal is invalid; expected 0, 1 or 2 [C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/basys_top_TB.sv:55]
 Completed static elaboration
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 54, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 60, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 66, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 72, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 78, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 84, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 90, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 96, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 102, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 108, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
-INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 114, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/ALU_TB.sv
+INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 45, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/basys_top_TB.sv
+INFO: [XSIM 43-4329] Assuming default value 1 for the first arguement of $fatal at Line 55, File C:/Vivado Stuff/RV32I_Datapath/RV32I_Datapath.srcs/sim_1/new/basys_top_TB.sv
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.rv32i_pc
+Compiling module xil_defaultlib.rv32i_instruction_memory
+Compiling module xil_defaultlib.rv32i_decoder
+Compiling module xil_defaultlib.rv32i_immediate_gen
+Compiling module xil_defaultlib.rv32i_branch_condition
+Compiling module xil_defaultlib.rv32i_branch_immediate_generator
+Compiling module xil_defaultlib.Register
 Compiling module xil_defaultlib.ALU
-Compiling module xil_defaultlib.ALU_TB
+Compiling module xil_defaultlib.rv32i_core
+Compiling module xil_defaultlib.rv32i_top
+Compiling module xil_defaultlib.basys_top
+Compiling module xil_defaultlib.basys_top_TB
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot ALU_TB_behav
+Built simulation snapshot basys_top_TB_behav

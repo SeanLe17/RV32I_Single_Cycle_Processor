@@ -25,6 +25,8 @@ module ALU_TB;
     logic [31:0] a_TB, b_TB, result_TB;
     logic [3:0]  ALU_OP_TB;
     logic        zero;
+    int tests_run;
+    logic [31:0] expected_TB;
 
     localparam logic [3:0]
         ALU_ADD  = 4'd0,
@@ -47,73 +49,126 @@ module ALU_TB;
     );
 
     initial begin
-        // ADD: 10 + 20 = 30
-        a_TB = 32'd10; b_TB = 32'd20; ALU_OP_TB = ALU_ADD;
-        #1;
-        assert (result_TB == 32'd30 && zero == 1'b0)
-            else $fatal("ADD failed");
+        tests_run = 0;
 
-        // SUB: 10 - 20 = -10
-        a_TB = 32'd10; b_TB = 32'd20; ALU_OP_TB = ALU_SUB;
-        #1;
-        assert (result_TB == 32'hFFFF_FFF6 && zero == 1'b0)
-            else $fatal("SUB failed");
+        //ADD
+        for(int i = 0; i < 5000; i++) begin
+        a_TB = $urandom; 
+        b_TB = $urandom; 
+        ALU_OP_TB = ALU_ADD;
+        #1; 
+        assert (result_TB == a_TB + b_TB)
+            else $fatal("random ADD case failed");
+        tests_run++;
+        end
 
-        // SLL: 1 << 31 = 0x80000000
-        a_TB = 32'd1; b_TB = 32'd31; ALU_OP_TB = ALU_SLL;
-        #1;
-        assert (result_TB == 32'h8000_0000)
-            else $fatal("SLL failed");
+        //SUB
+        for(int i = 0; i < 5000; i++) begin
+        a_TB = $urandom; 
+        b_TB = $urandom; 
+        ALU_OP_TB = ALU_SUB;
+        #1; 
+        assert (result_TB == a_TB - b_TB)
+            else $fatal("random SUB case failed");
+        tests_run++;
+        end
 
-        // SLT: signed -1 < 1 is true
-        a_TB = 32'hFFFF_FFFF; b_TB = 32'd1; ALU_OP_TB = ALU_SLT;
-        #1;
-        assert (result_TB == 32'd1)
-            else $fatal("SLT failed");
+        //SLL
+        for(int i = 0; i < 5000; i++) begin
+        a_TB = $urandom; 
+        b_TB = $urandom; 
+        ALU_OP_TB = ALU_SLL;
+        #1; 
+        assert (result_TB == (a_TB << b_TB[4:0]))
+            else $fatal("random SLL case failed");
+        tests_run++;
+        end
 
-        // SLTU: unsigned 0xFFFFFFFF < 1 is false
-        a_TB = 32'hFFFF_FFFF; b_TB = 32'd1; ALU_OP_TB = ALU_SLTU;
-        #1;
-        assert (result_TB == 32'd0)
-            else $fatal("SLTU failed");
+        //SLT
+        for(int i = 0; i < 5000; i++) begin
+        a_TB = $urandom; 
+        b_TB = $urandom; 
+        ALU_OP_TB = ALU_SLT;
+        #1; 
+        assert (result_TB == ($signed(a_TB) < $signed(b_TB)))
+            else $fatal("random SLT case failed");
+        tests_run++;
+        end
 
-        // XOR: 1100 XOR 1010 = 0110
-        a_TB = 32'hC; b_TB = 32'hA; ALU_OP_TB = ALU_XOR;
-        #1;
-        assert (result_TB == 32'h6)
-            else $fatal("XOR failed");
+        //SLTU
+        for(int i = 0; i < 5000; i++) begin
+        a_TB = $urandom; 
+        b_TB = $urandom; 
+        ALU_OP_TB = ALU_SLTU;
+        #1; 
+        assert (result_TB == (a_TB < b_TB))
+            else $fatal("random SLTU case failed");
+        tests_run++;
+        end
 
-        // SRL: logical shift fills with zero
-        a_TB = 32'h8000_0000; b_TB = 32'd1; ALU_OP_TB = ALU_SRL;
-        #1;
-        assert (result_TB == 32'h4000_0000)
-            else $fatal("SRL failed");
+        //XOR
+        for(int i = 0; i < 5000; i++) begin
+            a_TB = $urandom;
+            b_TB = $urandom;
+            ALU_OP_TB = ALU_XOR;
+            #1;
+            assert (result_TB == (a_TB ^ b_TB))
+                else $fatal("random XOR case failed");
+            tests_run++;
+        end
 
-        // SRA: arithmetic shift preserves negative sign
-        a_TB = 32'hFFFF_FFF8; b_TB = 32'd2; ALU_OP_TB = ALU_SRA;
-        #1;
-        assert (result_TB == 32'hFFFF_FFFE)
-            else $fatal("SRA failed");
+        //SRL
+        for(int i = 0; i < 5000; i++) begin
+            a_TB = $urandom;
+            b_TB = $urandom;
+            ALU_OP_TB = ALU_SRL;
+            #1;
+            assert (result_TB == (a_TB >> b_TB[4:0]))
+                else $fatal("random SRL case failed");
+            tests_run++;
+        end
 
-        // OR: 1100 OR 1010 = 1110
-        a_TB = 32'hC; b_TB = 32'hA; ALU_OP_TB = ALU_OR;
-        #1;
-        assert (result_TB == 32'hE)
-            else $fatal("OR failed");
+        //SRA
+        for(int i = 0; i < 5000; i++) begin
+            a_TB = $urandom;
+            b_TB = $urandom;
+            ALU_OP_TB = ALU_SRA;
+            expected_TB = ($signed(a_TB) >>> b_TB[4:0]);
+            #1;
+            assert (result_TB == expected_TB)
+            else $fatal("random SRL case failed");
+            tests_run++;
+        end
 
-        // AND: 1100 AND 1010 = 1000
-        a_TB = 32'hC; b_TB = 32'hA; ALU_OP_TB = ALU_AND;
-        #1;
-        assert (result_TB == 32'h8)
-            else $fatal("AND failed");
+        //OR
+        for(int i = 0; i < 5000; i++) begin
+            a_TB = $urandom;
+            b_TB = $urandom;
+            ALU_OP_TB = ALU_OR;
+            #1;
+            assert (result_TB == (a_TB | b_TB))
+                else $fatal("random OR case failed");
+            tests_run++;
+        end
 
-        // Zero flag
-        a_TB = 32'd42; b_TB = 32'd42; ALU_OP_TB = ALU_SUB;
-        #1;
-        assert (result_TB == 32'd0 && zero == 1'b1)
-            else $fatal("Zero flag failed");
+        //AND
+        for(int i = 0; i < 5000; i++) begin
+            a_TB = $urandom;
+            b_TB = $urandom;
+            ALU_OP_TB = ALU_AND;
+            #1;
+            assert (result_TB == (a_TB & b_TB))
+                else $fatal("random AND case failed");
+            tests_run++;
+        end
 
-        $display("All expanded ALU tests passed.");
+        $display("");
+        $display("========================================");
+        $display("   PASS: ALU verification completed");
+        $display("   Randomized cases passed: %0d", tests_run);
+        $display("========================================");
+        $display("");
+
         $finish;
     end
 

@@ -25,10 +25,12 @@ module Register(
     input clk, reset, reg_write,
     input [4:0] rd_addr,
     input [31:0] rd_data,
-    output logic [31:0] rs1_data, rs2_data
+    output logic [31:0] rs1_data, rs2_data,
+    output logic [31:0] debug_x3
     );
     
     logic [31:0] registers[0:31]; // register bank
+    assign debug_x3 = registers[3];
     always_comb begin
         rs1_data = (rs1_addr ==0) ? 5'd0 : registers[rs1_addr];
         rs2_data = (rs2_addr ==0) ? 5'd0 : registers[rs2_addr];

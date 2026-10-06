@@ -1,13 +1,14 @@
 module rv32i_top (
-    input  logic        clk,
-    input  logic        reset,
-
+    input  logic clk,
+    input  logic reset,
+    
     output logic [31:0] pc,
     output logic [31:0] instruction,
-    output logic [31:0] alu_result
+    output logic [31:0] alu_result, debug_x3
 );
-    logic [31:0] next_pc;
-    assign next_pc = pc + 32'd4;
+    logic [31:0] next_pc, branch_imm;
+    logic branch_taken;
+    assign next_pc = branch_taken ? pc + branch_imm : pc + 32'd4;
     rv32i_pc counter (
         .clk(clk),
         .reset(reset),
@@ -23,7 +24,10 @@ module rv32i_top (
         .instruction(instruction),
         .clk(clk),
         .reset(reset),
-        .alu_result(alu_result)
+        .alu_result(alu_result),
+        .branch_imm(branch_imm),
+        .branch_taken(branch_taken),
+        .debug_x3(debug_x3)
     );
 
 endmodule

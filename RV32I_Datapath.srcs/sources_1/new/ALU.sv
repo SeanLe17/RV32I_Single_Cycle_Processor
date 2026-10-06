@@ -48,11 +48,11 @@ module ALU(
         ALU_SLTU: result = a < b;
         ALU_XOR: result = a ^ b;
         ALU_SRL: result = a >> b[4:0];
-        ALU_SRA: result = $signed(a) >>> b [4:0];
+        ALU_SRA: result = $signed(a) >>> b[4:0];
         ALU_OR: result = a | b;
         ALU_AND: result = a & b;
         endcase
-    assign zero = (result == 32'd0);
         end
+        assign zero = (result == 32'd0);
         
 endmodule
